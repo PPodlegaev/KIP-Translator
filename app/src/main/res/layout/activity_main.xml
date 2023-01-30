@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/green">
 
     <ImageButton
         android:id="@+id/btnSettings"
@@ -12,16 +13,19 @@
         android:layout_height="57dp"
         android:src="@drawable/settings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible"
+        android:background="@android:color/transparent"/>
 
     <LinearLayout
-        android:layout_width="387dp"
+        android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/background"
         android:elevation="4dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
@@ -69,20 +73,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:background="@drawable/background"
+            android:background="@color/grey"
             android:ems="10"
             android:hint="Перевести текст"
             android:importantForAutofill="no"
             android:inputType="textImeMultiLine|textMultiLine"
             android:textColor="@color/black"
             android:textSize="19dp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/background"
         android:elevation="8dp"
         android:padding="5dp"
@@ -104,6 +109,9 @@
             android:inputType="textImeMultiLine|textMultiLine"
             android:textColor="@color/black"
             android:textSize="19dp" />
+
+
+
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
