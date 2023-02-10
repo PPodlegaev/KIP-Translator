@@ -2,6 +2,7 @@ package com.example.kiptranslator
 
 import android.app.Activity
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.widget.*
@@ -11,7 +12,8 @@ import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 import java.util.*
-
+import android.content.ClipData
+import android.content.ClipboardManager
 
 class MainActivity : AppCompatActivity() {
     private val REQUEST_CODE_SPEECH_INPUT = 1
@@ -33,7 +35,13 @@ class MainActivity : AppCompatActivity() {
         val sourceText: EditText = findViewById(R.id.sourceText)
         val targetText: TextView = findViewById(R.id.targetText)
         val microphone: ImageButton = findViewById(R.id.btnMic)
-
+        val copy: ImageButton = findViewById((R.id.btnCopy))
+        val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        copy!!.setOnClickListener {
+            val clipData = ClipData.newPlainText("label", targetText!!.text.toString())
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(this@MainActivity, "Text Copyed", Toast.LENGTH_SHORT).show()
+        }
         microphone.setOnClickListener {
             // on below line we are calling speech recognizer intent.
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
