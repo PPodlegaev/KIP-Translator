@@ -17,6 +17,18 @@
         tools:visibility="visible"
         android:background="@android:color/transparent"/>
 
+    <ImageButton
+        android:id="@+id/btnMic"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/mic_background"
+        android:src="@drawable/ic_mic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -112,8 +124,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/sourceText"
@@ -121,8 +132,7 @@
             android:layout_height="match_parent"
             android:gravity="top"
             android:hint="@string/translated_text_hint"
-            android:textSize="19dp"
-            />
+            android:textSize="19dp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -147,11 +157,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="top"
-            android:hint="@string/translated_text_hint"
-            />
-
-
-
+            android:hint="@string/translated_text_hint" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
