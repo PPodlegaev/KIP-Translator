@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val targetText: TextView = findViewById(R.id.targetText)
         val microphone: ImageButton = findViewById(R.id.btnMic)
         val copy: ImageButton = findViewById((R.id.btnCopy))
+        val history: ImageButton = findViewById(R.id.btnHistory)
         val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         copy!!.setOnClickListener {
             val clipData = ClipData.newPlainText("label", targetText!!.text.toString())
@@ -111,13 +112,40 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
+            if(sourceText.text.isNotEmpty() && targetText.text.isNotEmpty()){
+                // below we have created
+                // a new DBHelper class,
+                // and passed context to it
+                val db = DBHelper(this, null)
+
+                // creating variables for values
+                // in name and age edit texts
+                val source_text = sourceText.text.toString()
+                val target_text = targetText.text.toString()
+
+                // calling method to add
+                // name to our database
+                db.addName(source_text, target_text)
+
+                // Toast to message on the screen
+                Toast.makeText(this, source_text + " added to database", Toast.LENGTH_LONG).show()
+
+            }
+
+
+
         }
 
         val btnSettings: ImageButton = findViewById(R.id.btnSettings)
         btnSettings.setOnClickListener {
-            SettingsActivity()
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
         }
 
+        history.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
