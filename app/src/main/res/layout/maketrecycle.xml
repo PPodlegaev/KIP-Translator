@@ -25,11 +25,13 @@
             app:layout_constraintTop_toBottomOf="@+id/firstTranslateRecycle" />
 
     <ImageButton
+        android:id="@+id/btnDeleteRecycle"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

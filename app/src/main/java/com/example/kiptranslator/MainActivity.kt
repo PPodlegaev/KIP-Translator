@@ -17,7 +17,7 @@ import android.content.ClipboardManager
 
 class MainActivity : AppCompatActivity() {
     private val REQUEST_CODE_SPEECH_INPUT = 1
-
+    private lateinit var sqLiteHelper: SQLiteHelper
     private var items= arrayOf("English","Russian")
     private var conditions = DownloadConditions.Builder()
         .requireWifi()
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
+        sqLiteHelper = SQLiteHelper(this)
         val itemsAdapter: ArrayAdapter<String> = ArrayAdapter(
             this,
             android.R.layout.simple_dropdown_item_1line, items)
@@ -112,29 +112,30 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-            if(sourceText.text.isNotEmpty() && targetText.text.isNotEmpty()){
-                // below we have created
-                // a new DBHelper class,
-                // and passed context to it
-                val db = DBHelper(this, null)
+              //   if(sourceText.text.isNotEmpty() && targetText.text.isNotEmpty()){
+              //  // below we have created
+              //  // a new DBHelper class,
+              //  // and passed context to it
+              //  val db = DBHelper(this, null)
+              //
+              //               // creating variables for values
+              //               // in name and age edit texts
+              //               val source_text = sourceText.text.toString()
+              //                   val target_text = targetText.text.toString()
+              //
+              //                       // calling method to add
+              //                       // name to our database
+              //                       db.addName(source_text, target_text)
+              //
+              //                       // Toast to message on the screen
+              //                       Toast.makeText(this, source_text + " added to database", Toast.LENGTH_LONG).show()
+              //
+              //                   }
 
-                // creating variables for values
-                // in name and age edit texts
-                val source_text = sourceText.text.toString()
-                val target_text = targetText.text.toString()
 
-                // calling method to add
-                // name to our database
-                db.addName(source_text, target_text)
-
-                // Toast to message on the screen
-                Toast.makeText(this, source_text + " added to database", Toast.LENGTH_LONG).show()
-
-            }
-
-
-
+            addTranslate()
         }
+
 
         val btnSettings: ImageButton = findViewById(R.id.btnSettings)
         btnSettings.setOnClickListener {
@@ -208,7 +209,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun addTranslate(){
+        val sourceText: EditText = findViewById(R.id.sourceText)
+        val targetText: TextView = findViewById(R.id.targetText)
+        val source = sourceText.text.toString()
+        val target = targetText.text.toString()
 
+        if(source.isNotEmpty() && target.isNotEmpty()){
+            val std = TranslateModel(sourceText = source, targetText = target)
+            val status = sqLiteHelper.insertTranslate(std)
+
+            if(status > -1){
+                Toast.makeText(this,"Перевод добавлен",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
 
 
