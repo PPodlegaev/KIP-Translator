@@ -28,6 +28,17 @@ class HistoryActivity : AppCompatActivity() {
             finish()
         }
         getTranslate()
+
+        adapter?.setonClickDeleteItem {
+            deleteTranslate(it.id)
+        }
+
+
+    }
+
+    private fun deleteTranslate(id:Int){
+        sqLiteHelper.deleteTranslateById(id)
+        getTranslate()
     }
 
     private fun getTranslate(){

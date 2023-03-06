@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/green">
+    android:background="@color/green"
+    tools:context=".MainActivity">
 
     <ImageButton
         android:id="@+id/btnSettings"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_settings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/btnHistory"
@@ -29,7 +29,7 @@
         android:id="@+id/btnMic"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/mic_background"
         android:src="@drawable/ic_mic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
-        <AutoCompleteTextView
+        <Spinner
             android:id="@+id/firstLangSelector"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
             android:text=""
             app:icon="@drawable/ic_arrows" />
 
-        <AutoCompleteTextView
+        <Spinner
             android:id="@+id/secondLangSelector"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -78,44 +78,25 @@
 
     </LinearLayout>
 
-    <ToggleButton
-        android:id="@+id/btnFirstModel"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:textOff="Скачать"
-        android:textOn="Удалить"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <ToggleButton
-        android:id="@+id/btnSecondModel"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:textOff="Скачать"
-        android:textOn="Удалить"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <Button
         android:id="@+id/btnTranslate"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Перевод"
-        app:layout_constraintEnd_toStartOf="@+id/btnSecondModel"
-        app:layout_constraintStart_toEndOf="@+id/btnFirstModel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <TextView
-        android:id="@+id/downloadedModels"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnDeleteTranslate"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="@string/downloaded_models_label"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Удалить Перевод"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.303" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTranslate" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -125,10 +106,10 @@
         android:layout_marginTop="84dp"
         android:background="@drawable/background"
         android:elevation="8dp"
+        android:inputType="textMultiLine"
         android:padding="5dp"
         app:boxBackgroundMode="none"
         app:hintEnabled="false"
-        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -167,11 +148,12 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:hint="@string/translated_text_hint" />
+
         <ImageButton
             android:id="@+id/btnCopy"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/ic_copy"/>
+            android:src="@drawable/ic_copy" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

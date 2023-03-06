@@ -6,6 +6,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.content.contentValuesOf
 
 class SQLiteHelper(context: Context) :
         SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
@@ -75,4 +76,16 @@ class SQLiteHelper(context: Context) :
         }
         return stdList
     }
+
+    fun deleteTranslateById(id:Int): Int{
+        val db = this.writableDatabase
+
+        val contentValues = contentValuesOf()
+        contentValues.put(ID, id)
+
+        val success = db.delete(TBL_TRANSLATE, "id=$id", null)
+        db.close()
+        return success
+    }
+
 }
